@@ -32,6 +32,21 @@ document.addEventListener('DOMContentLoaded', function() {
 			alert(alertMessage);
 		});
 	}
+
+	// --- Lógica para carregar o Google Map (index.html) ---
+	const mapElement = document.getElementById('map');
+	if (mapElement && typeof API_KEY !== 'undefined' && API_KEY !== 'SUA_CHAVE_API_AQUI') {
+		// Cria a tag de script para a API do Google Maps
+		const script = document.createElement('script');
+		script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+		script.async = true;
+		script.defer = true;
+		
+		// Adiciona o script ao final do body
+		document.body.appendChild(script);
+	} else if (mapElement) {
+		mapElement.innerHTML = '<p style="text-align:center; padding-top: 20px;">Mapa indisponível. Configure a chave de API no arquivo <strong>config.js</strong>.</p>';
+	}
 });
 
 // --- Função para iniciar o Google Map (index.html) ---

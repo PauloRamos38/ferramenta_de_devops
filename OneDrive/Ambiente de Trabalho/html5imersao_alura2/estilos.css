@@ -102,6 +102,14 @@ input[type=text],input[type=email],textarea{width:100%;padding:10px;border-radiu
 }
 .cta.add-to-cart { margin-top: 24px; background: #10b981; color: #fff; }
 
+/* Seção de Tecnologias (index.html) */
+.tecnologias {
+	margin-top: 20px;
+}
+.tecnologias .lead {
+	margin-bottom: 14px;
+}
+
 /* Media Queries (Responsividade) */
 @media (max-width:820px){
 	.hero{grid-template-columns:1fr;}

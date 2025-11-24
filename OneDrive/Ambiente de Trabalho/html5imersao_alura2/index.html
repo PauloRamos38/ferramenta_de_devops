@@ -55,9 +55,9 @@
 			</div>
 		</main>
 
-		<section style="margin-top: 20px;">
+		<section class="tecnologias">
 			<h2>Tecnologias Utilizadas</h2>
-			<p class="lead" style="margin-bottom: 14px;">Para construir este projeto, usaremos as seguintes tecnologias e ferramentas:</p>
+			<p class="lead">Para construir este projeto, usaremos as seguintes tecnologias e ferramentas:</p>
 			<div class="cards">
 				<div class="feature">
 					<h3>HTML5</h3>
@@ -78,32 +78,12 @@
 			</div>
 		</section>
 
-		<section style="margin-top: 20px;">
-			<h2>Exemplo de Código do Servidor (Node.js)</h2>
-			<p class="lead" style="margin-bottom: 14px;">Este é um exemplo de como o servidor backend seria implementado com Node.js e Express para servir as páginas do projeto.</p>
-			<div class="code-block">
-				<pre><code>
-const express = require('express');
-const path = require('path');
-const app = express();
-const PORT = 3000;
-
-// Serve os arquivos estáticos da pasta principal
-app.use(express.static(path.join(__dirname, '/')));
-
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
-				</code></pre>
-			</div>
-		</section>
-
 		<footer id="contato">© 2024 — Projeto E-commerce. Criado com base na Imersão Alura.</footer>
-	</div>
-	<script src="./app.js"></script>
 
-	<!-- Script do Google Maps com a sua Chave de API -->
-	<!-- Substitua SUA_CHAVE_API_AQUI pela sua chave real se for diferente -->
-	<script async
-		src="https://maps.googleapis.com/maps/api/js?key=SUA_CHAVE_API_AQUI&callback=initMap">
-	</script>
+		<!-- O mapa será carregado aqui pelo app.js -->
+		<div id="map"></div>
+	</div>
+	<script src="./config.js"></script>
+	<script src="./app.js"></script>
 </body>
 </html>

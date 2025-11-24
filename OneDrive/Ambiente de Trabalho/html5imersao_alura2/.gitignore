@@ -1,15 +1,5 @@
-# Arquivos de log
-*.log
-
-# Dependências do Node.js (essencial se você usar npm)
+# Ignorar dependências do Node.js
 node_modules/
-
-# Arquivos de ambiente - NUNCA comite isso!
-.env
 
 # Arquivos de sistema operacional
 .DS_Store
-Thumbs.db
-
-# Arquivos de configuração do editor (opcional, mas bom para equipes)
-.vscode/
