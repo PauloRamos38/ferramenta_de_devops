@@ -11,12 +11,14 @@ name: Upload Python Package
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   release-build:
+    if: ${{ hashFiles('pyproject.toml', 'setup.py', 'setup.cfg') != '' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -39,6 +41,7 @@ jobs:
           path: dist/
 
   pypi-publish:
+    if: ${{ hashFiles('pyproject.toml', 'setup.py', 'setup.cfg') != '' }}
     runs-on: ubuntu-latest
     needs:
       - release-build

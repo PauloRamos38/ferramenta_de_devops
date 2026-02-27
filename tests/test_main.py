@@ -15,10 +15,8 @@ def test_home_endpoint(client):
     """Testa o endpoint principal"""
     response = client.get('/')
     assert response.status_code == 200
-    data = response.get_json()
-    assert data['status'] == 'online'
-    assert 'message' in data
-    assert 'timestamp' in data
+    assert 'text/html' in response.content_type
+    assert b'DevOps Pipeline' in response.data
 
 def test_health_endpoint(client):
     """Testa o health check"""

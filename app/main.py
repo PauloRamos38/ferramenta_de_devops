@@ -1,19 +1,22 @@
 """
 Flask API simples para demonstração de DevOps
 """
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
+from flask_cors import CORS
 from datetime import datetime
+import os
 
 app = Flask(__name__)
+CORS(app)  # Habilitar CORS para requisições do dashboard
+
+# Configurar caminho para arquivos estáticos
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_DIR = BASE_DIR
 
 @app.route('/')
-def home():
-    """Endpoint principal"""
-    return jsonify({
-        'message': 'Bem-vindo à API Flask!',
-        'status': 'online',
-        'timestamp': datetime.now().isoformat()
-    })
+def index():
+    """Servir o dashboard HTML"""
+    return send_from_directory(STATIC_DIR, 'index.html')
 
 @app.route('/health')
 def health():
@@ -28,9 +31,9 @@ def health():
 def get_users():
     """Endpoint de exemplo - lista de usuários"""
     users = [
-        {'id': 1, 'name': 'Paulo Ramos', 'role': 'DevOps Engineer'},
-        {'id': 2, 'name': 'Maria Silva', 'role': 'Developer'},
-        {'id': 3, 'name': 'João Santos', 'role': 'SRE'}
+        {'id': 1, 'name': 'Paulo', 'role': 'DevOps Engineer'},
+        {'id': 2, 'name': 'Emma', 'role': 'Developer'},
+        {'id': 3, 'name': 'Lucas', 'role': 'SRE'}
     ]
     return jsonify({
         'users': users,

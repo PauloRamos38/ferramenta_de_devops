@@ -63,11 +63,11 @@ jobs:
         sleep 5
         
         echo "🧪 Testing health endpoints..."
-        curl -s http://localhost:5000/health | grep -q '"status":"healthy"' && echo "✅ Health check passed" || echo "❌ Health check failed"
-        curl -s http://localhost:5000/ready | grep -q '"ready":true' && echo "✅ Readiness check passed" || echo "❌ Readiness check failed"
+        curl -fsS http://localhost:5000/health | grep -q '"status":"healthy"' && echo "✅ Health check passed" || (echo "❌ Health check failed" && exit 1)
         
         echo "📊 Testing API endpoints..."
-        curl -s -X GET http://localhost:5000/tasks | grep -q '"tasks":\[\]' && echo "✅ GET /tasks passed" || echo "❌ GET /tasks failed"
+        curl -fsS -X GET http://localhost:5000/api/users | grep -q '"users"' && echo "✅ GET /api/users passed" || (echo "❌ GET /api/users failed" && exit 1)
+        curl -fsS -X GET http://localhost:5000/api/info | grep -q '"project"' && echo "✅ GET /api/info passed" || (echo "❌ GET /api/info failed" && exit 1)
         
         docker stop test-api
         docker rm test-api
