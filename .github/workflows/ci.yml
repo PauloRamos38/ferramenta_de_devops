@@ -49,14 +49,28 @@ jobs:
     - name: Build Docker image
       run: |
         docker build -t flask-api:latest .
+        docker tag flask-api:latest flask-api:${{ github.sha }}
         
     - name: Test Docker image
       run: |
         docker run -d -p 5000:5000 --name test-api flask-api:latest
         sleep 10
         curl -f http://localhost:5000/health || exit 1
+        curl -f http://localhost:5000/ready || exit 1
         docker stop test-api
         docker rm test-api
+        
+    - name: Save Docker image artifact
+      run: |
+        mkdir -p docker-artifacts
+        docker save -o docker-artifacts/flask-api-latest.tar flask-api:latest
+        
+    - name: Upload Docker image artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: docker-image
+        path: docker-artifacts/flask-api-latest.tar
+        retention-days: 1
         
   lint:
     name: Code Quality Check
@@ -79,3 +93,30 @@ jobs:
       run: |
         flake8 app/ --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 app/ --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
+  deploy:
+    name: Deploy Status
+    runs-on: ubuntu-latest
+    needs: [test, build, lint]
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Generate deployment status
+      run: |
+        echo "✅ Pipeline CI/CD executado com sucesso!"
+        echo "📦 Docker image built: flask-api:latest"
+        echo "🧪 Testes: PASSOU"
+        echo "🔍 Linting: PASSOU"
+        echo ""
+        echo "📝 Deployment checklist:"
+        echo "  ✓ Código testado"
+        echo "  ✓ Docker image criada"
+        echo "  ✓ Code quality verificada"
+        echo "  ✓ Pronto para deploy em produção"
+        
+    - name: Create deployment annotation
+      run: |
+        echo "::notice::✅ Pipeline CI/CD completo - Pronto para deploy"
