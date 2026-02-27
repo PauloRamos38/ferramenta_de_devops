@@ -1,10 +1,13 @@
-# 🚀 Ferramenta DevOps & Exercícios C - Pipeline CI/CD Integrado
+# 🚀 Ferramenta DevOps - Pipeline CI/CD Completo
 
 ## 📋 Sobre o Projeto
 
-**Repositório Integrado** que combina dois escopos:
-- 🐍 **Pipeline CI/CD Profissional**: Flask API, Docker, GitHub Actions, Kubernetes e Monitoramento
-- 🔤 **Exercícios de Aprendizado em C**: 11 programas de exemplo com compilação automatizada
+**Ferramenta profissional de DevOps** com pipeline CI/CD completo incluindo:
+- 🐍 **Flask API** com testes automatizados
+- 🐳 **Docker & Docker Compose** para containerização
+- ☸️ **Kubernetes** com auto-scaling
+- 📊 **Monitoramento** com Prometheus + Grafana
+- 🔄 **GitHub Actions** para CI/CD automatizado
 
 **Status**: ✅ PRONTO PARA PRODUÇÃO
 
@@ -17,27 +20,11 @@
 ├── app/                          # 🐍 Aplicação Flask (API Principal)
 │   ├── __init__.py
 │   ├── main.py                   # API com endpoints /health, /ready, /metrics
-│   └── requirements.txt           # Dependências Python
+│   └── requirements.txt          # Dependências Python
 │
 ├── tests/                        # 🧪 Testes Automatizados
 │   ├── __init__.py
 │   └── test_main.py              # 8 testes com 92% cobertura
-│
-├── c-exercises/                  # 🔤 Exercícios de Programação em C
-│   ├── olamundo.c                # Primeiro programa
-│   ├── n1_nc.c                   # Variáveis e tipos
-│   ├── n2_codar.c                # Entrada/Saída (scanf/printf)
-│   ├── n2_codar2.c               # Cálculo de média
-│   ├── n2_nc3_1.c                # Operações matemáticas
-│   ├── n2_nc3_3.c                # Incremento/Decremento
-│   ├── n2r_codar_execucao.c      # 🎮 Pedra-Papel-Tesoura
-│   ├── n3r_nc1_3.c               # 🎮 Jogo de Adivinhação
-│   ├── nr3_codar_gabarito.c      # 🎮 Jogo avançado
-│   ├── compile.bat               # Script compilação (Windows)
-│   ├── compile.sh                # Script compilação (Unix/Linux/macOS)
-│   ├── README.md                 # Guia completo C
-│   ├── TROUBLESHOOTING.md        # Solução de erros comuns
-│   └── .gitignore                # Ignora .exe e binários
 │
 ├── .github/                      # GitHub Actions CI/CD
 │   └── workflows/
@@ -48,21 +35,13 @@
 ├── requirements-dev.txt          # Dependências de desenvolvimento
 ├── requirements.txt              # Dependências de produção
 ├── .gitignore                    # Ignora binários e temporários
-├── README.md                     # Este arquivo
-│
-└── 📊 Documentação Adicional
-    ├── GO_LIVE_README.md         # Guia técnico completo
-    ├── GO_LIVE.html              # Dashboard visual do deployment
-    ├── GO_LIVE.bat               # Script de inicialização (Windows)
-    ├── load_test_python.py       # Teste de carga (Python)
-    └── teste_carga.bat           # Teste de carga (Windows)
+└── README.md                     # Este arquivo
 ```
 
 ---
 
 ## ✨ Destaques
 
-### 🐍 Pipeline DevOps
 - ✅ **Aplicação**: Flask 1.0.0 com API RESTful completa
 - ✅ **Testes**: 8 testes automatizados com 92% cobertura
 - ✅ **Performance**: 350 req/s | 45ms resposta média | 99.8% taxa sucesso
@@ -71,36 +50,11 @@
 - ✅ **Container**: Docker e Docker Compose configurados
 - ✅ **CI/CD**: GitHub Actions com pipeline automatizado
 
-### 🔤 Exercícios em C
-- ✅ **11 Programas** estruturados do básico ao intermediário
-- ✅ **Conceitos**: Variáveis, entrada/saída, operadores, controle de fluxo, funções
-- ✅ **Jogos Interativos**: Pedra-Papel-Tesoura, Jogo da Adivinhação
-- ✅ **Compilação**: Scripts automáticos para Windows (batch) e Unix/Linux
-- ✅ **Sem dependências**: Apenas GCC/MinGW necessário
-
 ---
 
 ## 🚀 Quick Start
 
-### **Opção 1: Exercícios em C (Recomendado para começar)**
-
-```bash
-cd c-exercises
-
-# Windows
-compile.bat
-
-# Linux/macOS
-bash compile.sh
-
-# Executar um programa
-./olamundo.exe      # Windows
-./olamundo          # Linux/macOS
-```
-
-**Para detalhes**: Consulte [c-exercises/README.md](c-exercises/README.md)
-
-### **Opção 2: Pipeline DevOps Localmente**
+### **Opção 1: Localmente (Desenvolvimento)**
 
 ```bash
 # Instalar dependências
@@ -111,14 +65,11 @@ pytest tests/ -v
 
 # Iniciar aplicação
 python app/main.py
-
-# Acessar API
-curl http://localhost:5000/health
 ```
 
 **Acesso**: http://localhost:5000
 
-### **Opção 3: Com Docker Compose**
+### **Opção 2: Com Docker Compose**
 
 ```bash
 # Iniciar todos os serviços
@@ -135,7 +86,7 @@ docker-compose down
 - 🏥 **Health Check**: http://localhost:5000/health
 - 🧪 **Ready Probe**: http://localhost:5000/ready
 
-### **Opção 4: Kubernetes (Minikube)**
+### **Opção 3: Kubernetes (Produção)**
 
 ```bash
 # Iniciar Minikube
@@ -233,28 +184,21 @@ teste_carga.bat
 
 | Arquivo | Descrição |
 |---------|-----------|
-| `GO_LIVE_README.md` | Documentação técnica completa do deployment |
-| `GO_LIVE.html` | Dashboard visual interativo do deployment |
-| `GO_LIVE.bat` | Script de inicialização automática (Windows) |
-| `load_test_python.py` | Script de teste de carga em Python |
-| `teste_carga.bat` | Script de teste de carga para Windows |
+| `app/main.py` | Aplicação Flask principal com API |
+| `tests/test_main.py` | Suite completa de testes |
 | `docker-compose.yml` | Orquestração de contêineres locais |
 | `Dockerfile` | Definição da imagem Docker |
+| `.github/workflows/ci-cd.yml` | Pipeline CI/CD automatizado |
 
 ---
 
 ## 🔧 Troubleshooting
 
-### **Problemas com Exercícios C?**
-→ Consulte [c-exercises/TROUBLESHOOTING.md](c-exercises/TROUBLESHOOTING.md)
-
-### **Problemas com DevOps?**
-→ Consulte [GO_LIVE_README.md](GO_LIVE_README.md)
-
 ### **Erros comuns:**
-- `gcc: command not found` → Instale GCC/MinGW
-- `Port 5000 already in use` → Use `-p 5001:5000` no Docker
+- `Port 5000 already in use` → Use `-p 5001:5000` no Docker ou `export FLASK_PORT=5001`
 - `Kubernetes connection refused` → Inicie Minikube com `minikube start`
+- `Tests failing` → Certifique-se de ter todas as dependências: `pip install -r requirements-dev.txt`
+- `Docker build fails` → Verifique se o Docker daemon está executando
 
 ---
 
@@ -273,11 +217,7 @@ teste_carga.bat
 
 ## 📞 Suporte & Documentação
 
-Para informações detalhadas, consulte:
-- 📖 **[GO_LIVE_README.md](GO_LIVE_README.md)** - Documentação técnica completa
-- 🎨 **[GO_LIVE.html](GO_LIVE.html)** - Dashboard visual interativo
-- 🔤 **[c-exercises/README.md](c-exercises/README.md)** - Guia dos exercícios em C
-- 🐛 **[c-exercises/TROUBLESHOOTING.md](c-exercises/TROUBLESHOOTING.md)** - Solução de problemas
+Para informações detalhadas sobre deployment e monitoramento, consulte a documentação adicional incluída no repositório.
 
 ---
 
@@ -296,7 +236,7 @@ Para informações detalhadas, consulte:
 
 ## 👨‍💻 Autor
 
-**Paulo Ramos** - Projeto integrado DevOps + Exercícios em C
+**Paulo Ramos** - Ferramenta DevOps CI/CD
 
 ---
 
@@ -304,7 +244,7 @@ Para informações detalhadas, consulte:
 
 MIT License - Livre para usar, modificar e distribuir
 
-**Última atualização**: 2 de fevereiro de 2026  
+**Última atualização**: 27 de fevereiro de 2026  
 **Status**: ✅ PRONTO PARA PRODUÇÃO
 🔧 Melhorias Futuras
  Implementar HTTPS/SSL
