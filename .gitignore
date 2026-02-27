@@ -46,3 +46,11 @@ Thumbs.db
 
 # Docker
 *.log
+
+# Pastas externas não relacionadas ao projeto
+OneDrive/
+projeto_em_c/
+projeto_em_c_clone/
+alura.js/
+html5imersao_alura2/
+Pipeline CICD Completo com Monitoramento/
